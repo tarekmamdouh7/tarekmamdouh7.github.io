@@ -4,6 +4,284 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tarek Mamdouh | AI Engineer & Data Analyst</title>
+<meta name="description" content="Portfolio of Tarek Mamdouh — AI Engineer & Data Analyst. Data Analysis, Data Science, Machine Learning.">
+<style>
+  :root{
+    --bg:#0a0e17; --card:#111827; --card2:#0f1722; --border:#1f2a3a;
+    --text:#e6edf6; --muted:#8b98ab; --accent:#4da3ff; --accent2:#9d6bff;
+    --green:#3fb950;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.65; overflow-x:hidden;
+  }
+  /* animated background */
+  .bg-blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.18;z-index:-1;animation:drift 18s ease-in-out infinite alternate}
+  .b1{width:480px;height:480px;background:#1f6feb;top:-120px;left:-120px}
+  .b2{width:420px;height:420px;background:#7b3ff2;bottom:-100px;right:-100px;animation-delay:-6s}
+  .b3{width:300px;height:300px;background:#0e7490;top:40%;left:60%;animation-delay:-12s}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,40px) scale(1.15)}}
+
+  .container{max-width:960px;margin:0 auto;padding:0 24px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(10,14,23,.75);border-bottom:1px solid var(--border)}
+  nav .container{display:flex;justify-content:space-between;align-items:center;padding:14px 24px}
+  nav .logo{font-weight:700;font-size:1.1rem;color:var(--text);text-decoration:none}
+  nav .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:22px;list-style:none}
+  nav a{color:var(--muted);text-decoration:none;font-size:.95rem;transition:color .2s}
+  nav a:hover{color:var(--accent)}
+  @media(max-width:640px){nav ul{display:none}}
+
+  /* hero */
+  .hero{padding:90px 0 70px;text-align:center}
+  .avatar{
+    width:170px;height:170px;border-radius:50%;object-fit:cover;
+    border:4px solid transparent;
+    background:linear-gradient(var(--bg),var(--bg)) padding-box,
+               linear-gradient(135deg,var(--accent),var(--accent2)) border-box;
+    box-shadow:0 0 45px rgba(77,163,255,.35);
+    animation:float 5s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .hero h1{font-size:2.8rem;margin-top:26px;letter-spacing:.5px}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .typing{font-size:1.25rem;color:var(--muted);min-height:2rem;margin-top:8px;font-weight:600}
+  .typing .cursor{color:var(--accent);animation:blink 1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hero p.tag{max-width:620px;margin:16px auto 0;color:var(--muted)}
+  .btn-row{margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-3px)}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff}
+  .btn-primary:hover{box-shadow:0 8px 25px rgba(77,163,255,.4)}
+  .btn-ghost{border:1px solid var(--border);color:var(--text);background:var(--card)}
+  .btn-ghost:hover{border-color:var(--accent)}
+
+  /* sections */
+  section{padding:64px 0}
+  .sec-title{font-size:1.9rem;text-align:center;margin-bottom:8px}
+  .sec-title::after{content:'';display:block;width:64px;height:3px;margin:12px auto 0;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .sec-sub{text-align:center;color:var(--muted);margin-bottom:36px}
+
+  /* about */
+  .about-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px 36px}
+  .about-card p{margin-bottom:16px;color:#c3cede}
+  .about-card p:last-child{margin-bottom:0}
+
+  /* skills */
+  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .chip{background:var(--card);border:1px solid var(--border);padding:9px 18px;border-radius:999px;font-size:.9rem;color:#c3cede;transition:all .2s;cursor:default}
+  .chip:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);box-shadow:0 6px 18px rgba(77,163,255,.18)}
+
+  /* projects */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;
+    display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;
+    transition:transform .25s,border-color .25s,box-shadow .25s;
+  }
+  .card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  .card h3{font-size:1.15rem;color:var(--text)}
+  .card h3 .arrow{color:var(--accent);font-size:.9rem}
+  .card p{color:var(--muted);font-size:.92rem;flex:1}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag-chip{font-size:.75rem;color:var(--accent);background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.25);padding:3px 10px;border-radius:999px}
+
+  /* timeline */
+  .timeline{position:relative;max-width:680px;margin:0 auto;padding-left:28px;border-left:2px solid var(--border)}
+  .t-item{position:relative;padding:0 0 34px 22px}
+  .t-item::before{
+    content:'';position:absolute;left:-36px;top:6px;width:14px;height:14px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--accent);box-shadow:0 0 12px rgba(77,163,255,.5)
+  }
+  .t-item h3{font-size:1.1rem}
+  .t-item .org{color:var(--accent);font-weight:600;font-size:.95rem}
+  .t-item .date{color:var(--muted);font-size:.85rem}
+  .t-item p{color:var(--muted);font-size:.92rem;margin-top:4px}
+
+  /* contact */
+  .contact-card{background:linear-gradient(135deg,rgba(77,163,255,.12),rgba(157,107,255,.12));border:1px solid var(--border);border-radius:16px;padding:40px;text-align:center}
+  .contact-card h2{font-size:1.7rem;margin-bottom:10px}
+  .contact-card p{color:var(--muted);margin-bottom:24px}
+  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+
+  /* scroll reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<div class="bg-blob b1"></div>
+<div class="bg-blob b2"></div>
+<div class="bg-blob b3"></div>
+
+<nav>
+  <div class="container">
+    <a class="logo" href="#top">Tarek<span>.</span>Mamdouh</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero container" id="top">
+  <img class="avatar" src="photo.jpg" alt="Tarek Mamdouh" onerror="this.style.display='none'">
+  <h1>Hi, I'm <span class="grad">Tarek Mamdouh</span></h1>
+  <div class="typing"><span id="type-text"></span><span class="cursor">|</span></div>
+  <p class="tag">CS &amp; AI graduate turning raw data into insights and models that solve real problems. Open to junior roles in Data Analysis, Data Science, Machine Learning and AI.</p>
+  <div class="btn-row">
+    <a class="btn btn-primary" href="#projects">View my work</a>
+    <a class="btn btn-ghost" href="https://github.com/tarekmamdouh7" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/tarek-elgraidy" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</header>
+
+<section id="about" class="container reveal">
+  <h2 class="sec-title">About Me</h2>
+  <p class="sec-sub">Data analyst, data scientist and AI engineer in one</p>
+  <div class="about-card">
+    <p>I'm an AI graduate from Ahram Canadian University, with a strong focus on Data Analysis and Data Science. I turn raw data into valuable insights that guide decisions, improve performance, and create real-world impact.</p>
+    <p>I have strong practical experience in data cleaning, exploration, visualization, and predictive modeling, working with Python, Excel, SQL, Pandas, NumPy, Matplotlib, Seaborn, Power BI, Tableau, Scikit-learn, and TensorFlow — building both analytical dashboards and smart AI systems.</p>
+    <p>My background in AI lets me go beyond standard analytics, applying Machine Learning, Deep Learning, NLP, and Computer Vision — from extracting business insights to deploying intelligent models.</p>
+    <p>I'm passionate about continuous learning and innovation, and I'm currently open to junior Data Analyst, Data Scientist, and AI Engineer roles.</p>
+  </div>
+</section>
+
+<section id="skills" class="container reveal">
+  <h2 class="sec-title">Skills</h2>
+  <p class="sec-sub">The tools I work with every day</p>
+  <div class="chips">
+    <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span>
+    <span class="chip">Excel</span><span class="chip">Pandas</span><span class="chip">NumPy</span>
+    <span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">Tableau</span>
+    <span class="chip">Scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">Keras</span>
+    <span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">NLP</span>
+    <span class="chip">Computer Vision</span><span class="chip">Data Visualization</span><span class="chip">Statistical Analysis</span>
+    <span class="chip">Data Cleaning</span><span class="chip">Data Warehousing</span>
+  </div>
+</section>
+
+<section id="projects" class="container reveal">
+  <h2 class="sec-title">Featured Projects</h2>
+  <p class="sec-sub">A selection of what I've built — code on GitHub</p>
+  <div class="grid">
+    <a class="card" href="https://github.com/tarekmamdouh7/Credit_Card_Customer" target="_blank" rel="noopener">
+      <h3>Credit Card Customer Analysis <span class="arrow">→</span></h3>
+      <p>End-to-end analysis of credit card customer data: cleaning, EDA and visualizations uncovering spending and churn patterns.</p>
+      <div class="tags"><span class="tag-chip">Python</span><span class="tag-chip">Pandas</span><span class="tag-chip">EDA</span></div>
+    </a>
+    <a class="card" href="https://github.com/tarekmamdouh7/Text_Generation" target="_blank" rel="noopener">
+      <h3>Arabic Poetry Generation <span class="arrow">→</span></h3>
+      <p>Character-level LSTM trained on the poems of Ibn al-Rumi to generate new Arabic poetry verse by verse.</p>
+      <div class="tags"><span class="tag-chip">TensorFlow</span><span class="tag-chip">LSTM</span><span class="tag-chip">NLP</span></div>
+    </a>
+    <a class="card" href="https://github.com/tarekmamdouh7/Income_Prediction" target="_blank" rel="noopener">
+      <h3>Income Prediction <span class="arrow">→</span></h3>
+      <p>Classification on census data predicting income brackets, with feature engineering, model comparison and tuning.</p>
+      <div class="tags"><span class="tag-chip">Scikit-learn</span><span class="tag-chip">Classification</span></div>
+    </a>
+    <a class="card" href="https://github.com/tarekmamdouh7/Cars_Price_Prediction" target="_blank" rel="noopener">
+      <h3>Cars Price Prediction <span class="arrow">→</span></h3>
+      <p>Regression models estimating used-car prices, with data preprocessing and evaluation across multiple algorithms.</p>
+      <div class="tags"><span class="tag-chip">Scikit-learn</span><span class="tag-chip">Regression</span></div>
+    </a>
+    <a class="card" href="https://github.com/tarekmamdouh7/Daily_Weather" target="_blank" rel="noopener">
+      <h3>Daily Weather Forecasting <span class="arrow">→</span></h3>
+      <p>Time-series forecasting of daily weather using recurrent neural networks (SimpleRNN).</p>
+      <div class="tags"><span class="tag-chip">Deep Learning</span><span class="tag-chip">Time Series</span></div>
+    </a>
+    <a class="card" href="https://github.com/tarekmamdouh7/PlantVillage" target="_blank" rel="noopener">
+      <h3>Plant Disease Classification <span class="arrow">→</span></h3>
+      <p>Experimental computer-vision project classifying plant leaf diseases from images using a CNN (work in progress).</p>
+      <div class="tags"><span class="tag-chip">TensorFlow</span><span class="tag-chip">CNN</span><span class="tag-chip">Computer Vision</span></div>
+    </a>
+  </div>
+</section>
+
+<section id="education" class="container reveal">
+  <h2 class="sec-title">Education &amp; Training</h2>
+  <p class="sec-sub">Where I built my foundation</p>
+  <div class="timeline">
+    <div class="t-item">
+      <h3>B.Sc. Computer Science &amp; Artificial Intelligence</h3>
+      <div class="org">Ahram Canadian University</div>
+      <div class="date">Class of 2025 · Very Good with Honors</div>
+    </div>
+    <div class="t-item">
+      <h3>Artificial Intelligence Diploma</h3>
+      <div class="org">Instant Software Solutions</div>
+      <div class="date">170 hours</div>
+      <p>AI &amp; machine learning diploma with hands-on projects in classification, NLP and deep learning.</p>
+    </div>
+    <div class="t-item">
+      <h3>Machine Learning for Data Analysis</h3>
+      <div class="org">National Telecommunication Institute (NTI)</div>
+      <div class="date">Oct 2024 – Dec 2024</div>
+    </div>
+    <div class="t-item">
+      <h3>AI Diploma — Egyptian Talents Academy (ETA)</h3>
+      <div class="org">NTI · Huawei</div>
+      <div class="date">Apr 2025 – Jul 2025 · 80 hours · Score 97%</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="container reveal">
+  <div class="contact-card">
+    <h2>Let's work together</h2>
+    <p>I'm open to junior Data Analyst, Data Scientist and AI Engineer roles — and always happy to talk data.</p>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:tarekelgraidy@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://github.com/tarekmamdouh7" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/tarek-elgraidy" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2026 Tarek Mamdouh · 6th of October City, Giza, Egypt · Built with GitHub Pages</div>
+</footer>
+
+<script>
+  // typing animation
+  const roles = ["AI Engineer", "Data Analyst", "Data Scientist", "ML Engineer"];
+  const el = document.getElementById("type-text");
+  let ri = 0, ci = 0, deleting = false;
+  function tick(){
+    const word = roles[ri];
+    ci += deleting ? -1 : 1;
+    el.textContent = word.slice(0, ci);
+    let delay = deleting ? 45 : 90;
+    if(!deleting && ci === word.length){ delay = 1600; deleting = true; }
+    else if(deleting && ci === 0){ deleting = false; ri = (ri + 1) % roles.length; delay = 350; }
+    setTimeout(tick, delay);
+  }
+  tick();
+
+  // scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add("visible"); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll(".reveal").forEach(s => io.observe(s));
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarek Mamdouh | AI Engineer & Data Analyst</title>
 <meta name="description" content="Portfolio of Tarek Mamdouh, AI Engineer and Data Analyst. Data analysis, data science and machine learning projects.">
 <style>
   :root {
